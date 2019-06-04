@@ -13,6 +13,12 @@ const rootReducer = (state = initState, action) => {
             ...state,
             todos:[...state.todos,...action.todo]
         }
+    } else if(action.type=='DELETE_BOOK_DATA') {
+        let newState = state.todos.filter(todo=>todo.id!==action.id)
+        return {
+            ...state,
+            todos:newState
+        }
     }
     return state;
 }
